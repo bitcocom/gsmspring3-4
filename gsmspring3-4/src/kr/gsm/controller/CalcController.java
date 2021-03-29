@@ -14,7 +14,8 @@ import kr.mem.util.MyUtil;
 public class CalcController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			                            throws ServletException, IOException {
-		// 1. 클라이언트의 요청을 받는 작업(파라메터 수집)
+		//
+		//1. 클라이언트의 요청을 받는 작업(파라메터 수집)
 		int su1=Integer.parseInt(request.getParameter("su1"));
 		int su2=Integer.parseInt(request.getParameter("su2"));
 		// su1~su2 = ? 2.Model과 연동하는 작업
