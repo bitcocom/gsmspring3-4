@@ -1,6 +1,8 @@
 package kr.gsm.model;
 // JDBC API
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 public class MemberDAO {
    private Connection conn; //  연결객체
    private PreparedStatement ps; // SQL문장(전송객체)
@@ -21,11 +23,37 @@ public class MemberDAO {
 	    } 
    }
    // 회원전체리스트(List<MemberVO>) 가져오기
-   public void memberList() {
+   public List<MemberVO> memberList() {
 	   String SQL="select * from member";
-	   getConnect(); // DB연결
-	   
-	   
-   }
-   
+	   getConnect(); // conn=DB연결
+	   List<MemberVO> list=new ArrayList<MemberVO>();
+	   try {
+		// SQL문장을 전송하는 객체를 생성(PreparedStatement, Statement)   		   
+		ps=conn.prepareStatement(SQL); // 프리(먼저)컴파일->성능을 개선
+		rs=ps.executeQuery(); //실행
+		while(rs.next()) {
+			int num=rs.getInt("num");
+			String id=rs.getString("id");
+			String pass=rs.getString("pass");
+			String name=rs.getString("name");
+			int age=rs.getInt("age");
+			String phone=rs.getString("phone");
+			String email=rs.getString("email");			
+			// VO에 묶고
+			MemberVO vo=new MemberVO();
+			vo.setNum(num);
+			vo.setId(id);
+			vo.setPass(pass);
+			vo.setName(name);
+			vo.setAge(age);
+			vo.setPhone(phone);
+            vo.setEmail(email);
+            //VO를 List에 담기
+			list.add(vo);
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	   return list;
+   }   
 }
