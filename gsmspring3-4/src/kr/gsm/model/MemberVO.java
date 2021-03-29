@@ -50,5 +50,10 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	@Override
+	public String toString() {
+		return "MemberVO [num=" + num + ", id=" + id + ", pass=" + pass + ", name=" + name + ", age=" + age + ", phone="
+				+ phone + ", email=" + email + "]";
+	}
 	   
 }
