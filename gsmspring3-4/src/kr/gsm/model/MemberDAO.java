@@ -56,4 +56,24 @@ public class MemberDAO {
 	}
 	   return list;
    }   
+   // 회원가입동작(Java+SQL)
+   public int memberInsert(MemberVO vo) {
+	   getConnect(); // conn                                               1 2 3 4 5 6
+	   String SQL="insert into member(id,pass,name,age,phone,email) values(?,?,?,?,?,?)";
+       int cnt=0;
+	   try {
+    	  ps=conn.prepareStatement(SQL); //먼저 컴파일
+    	  ps.setString(1, vo.getId()); // 파라메터설정
+    	  ps.setString(2,vo.getPass());
+    	  ps.setString(3, vo.getName());
+    	  ps.setInt(4, vo.getAge());
+    	  ps.setString(5, vo.getPhone());
+    	  ps.setString(6, vo.getEmail());
+    	  cnt=ps.executeUpdate(); // 실행    	  
+	   } catch (Exception e) {
+		  e.printStackTrace();
+	   }
+	   return cnt;
+   }
 }
+
