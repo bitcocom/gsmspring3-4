@@ -75,5 +75,18 @@ public class MemberDAO {
 	   }
 	   return cnt;
    }
+   public int memberDelete(int num) {
+	   getConnect(); // conn
+	   String SQL="delete from member where num=?";
+	   int cnt=0;
+	   try {
+		  ps=conn.prepareStatement(SQL); // 프리컴파일
+		  ps.setInt(1, num);
+		  cnt=ps.executeUpdate(); // 실행
+	   } catch (Exception e) {
+		 e.printStackTrace();
+	   }
+	   return cnt; // 1 or 0
+   }   
 }
 
