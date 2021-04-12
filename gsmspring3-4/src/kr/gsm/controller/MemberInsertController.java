@@ -12,10 +12,12 @@ import kr.gsm.model.MemberVO;
 @WebServlet("/memberInsert.do")
 public class MemberInsertController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//                            euc-kr
+		request.setCharacterEncoding("euc-kr"); // 2byte
 		// 파라메터수집(VO)
 		String id=request.getParameter("id");
 		String pass=request.getParameter("pass");
-		String name=request.getParameter("name");
+		String name=request.getParameter("name"); //한글(2byte) - 1byte-1byte
 		int age=Integer.parseInt(request.getParameter("age"));
 		String phone=request.getParameter("phone");
 		String email=request.getParameter("email");
