@@ -19,6 +19,12 @@
      function goInput() {
 		  location.href="member/memberRegister.html";
 	 }
+      function goDel(num){
+    	  location.href="/m4/memberDelete.do?num="+num;
+      }
+      function goView(num){
+    	  location.href="/m4/memberContent.do?num="+num;
+      }
   </script>
 </head>
 <body>
@@ -32,20 +38,22 @@
      <td>나이</td>
      <td>전화번호</td>
      <td>이메일</td>
-   </tr>
+     <td>삭제</td>
+    </tr>
    <% for(MemberVO vo :  list) {%>
 	 <tr>
 	     <td><%=vo.getNum()%></td>
-	     <td><%=vo.getId()%></td>
+	     <td><a href="javascript:goView( <%=vo.getNum()%>)"><%=vo.getId()%></a></td>
 	     <td><%=vo.getPass() %></td>
 	     <td><%=vo.getName()%></td>
 	     <td><%=vo.getAge()%></td>
 	     <td><%=vo.getPhone()%></td>
 	     <td><%=vo.getEmail()%></td>
+	     <td><input type="button" value="삭제"  class="btn btn-warning" onclick="goDel(<%=vo.getNum()%>)"/></td>
 	   </tr>
 	 <% } %>
 	 <tr>
-	   <td colspan="7" align="right">
+	   <td colspan="8" align="right">
 	       <input type="button" value="회원가입" class="btn btn-primary"   onclick="goInput()"/>
 	   </td>
 	 </tr>

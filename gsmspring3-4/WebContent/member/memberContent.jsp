@@ -20,6 +20,8 @@
   </script>
 </head>
 <body>
+<form action="/m4/memberUpdate.do" method="post">
+<input type="hidden"  name="num"  value="<%=vo.getNum()%>"/>
 <table class="table table-bordered">
   <tr>
     <td>번호</td>
@@ -39,23 +41,24 @@
   </tr> 
     <tr>
     <td>나이</td>
-    <td><%=vo.getAge()%></td>
+    <td><input type="text" name="age" value="<%=vo.getAge()%>"/></td>
   </tr>
    <tr>
     <td>전화번호</td>
-    <td><%=vo.getPhone()%></td>
+    <td><input type="text" name="phone" value="<%=vo.getPhone()%>"/></td>
   </tr> 
     <tr>
     <td>이메일</td>
-    <td><%=vo.getEmail()%></td>
+    <td><input type="text" name="email" value="<%=vo.getEmail()%>"/></td>
   </tr>
   <tr>
     <td colspan="2" align="center">
-       <input type="button" value="수정"  class="btn btn-primary"/>
-       <input type="button" value="취소"  class="btn btn-warning"/>
+       <input type="submit" value="수정"  class="btn btn-primary"/>
+       <input type="reset" value="취소"  class="btn btn-warning"/>
        <input type="button" value="목록"  class="btn btn-success"  onclick="goList()"/>
     </td>
   </tr>
 </table>
+</form>
 </body>
 </html>
